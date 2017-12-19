@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-
-
-/**
- * Generated class for the DashboardPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -17,9 +10,35 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class DashboardPage {
 
-  constructor( private afAuth: AngularFireAuth, private toast: ToastController,
+  //------------------------- LIST OF COMPONENTS ---------------------------
+  image: string;
+  options: CameraOptions = {
+    quality: 100,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+  //----------------------- CONSTRUCTORS -----------------------------------
+  constructor(
+    private afAuth: AngularFireAuth, private toast: ToastController, private camera: Camera,
     public navCtrl: NavController, public navParams: NavParams) {
   }
+
+
+  //---------------------- FUNCTION THAT WILL RETURN A PROMISE ------------
+  async takePicture(): Promise<any>{
+    try{
+      this.image = await this.camera.getPicture(this.options);
+    }
+    catch(e){
+      console.log(e);
+    }
+
+  }
+
+
+
 
   ionViewWillLoad() {
 

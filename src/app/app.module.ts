@@ -1,21 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
+
+//------------ PAGES TO BE IMPORTED ----------------------
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
+//---------------- FIREBASE AND ANGULAR STUFF ------------
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
 
+//---------------- EXTRANEOUS STUFF FROM @IONIC ------------
 import { Contacts } from '@ionic-native/contacts';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,8 @@ import { Contacts } from '@ionic-native/contacts';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera
   ]
 })
 
