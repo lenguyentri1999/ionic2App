@@ -14,6 +14,8 @@
 
 
 <ion-content padding>
+  <img src="../../assets/imgs/snapbit.png" />
+ <p>{{errorMessage}}</p>
   <ion-item>
     <ion-label floating>Email</ion-label>
     <ion-input type="text" [(ngModel)]="user.email"></ion-input>
@@ -26,8 +28,11 @@
 
 
 
+
   <button ion-button (click)="login(user)">Login</button>
   <button ion-button color="light" (click)="register()">Sign Up</button>
+
+
 
 
 </ion-content>

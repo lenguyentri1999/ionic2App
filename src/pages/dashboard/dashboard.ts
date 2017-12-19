@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from '../../models/user';
 
 
 /**
@@ -18,16 +17,19 @@ import { User } from '../../models/user';
 })
 export class DashboardPage {
 
-  user = {} as User;
   constructor( private afAuth: AngularFireAuth, private toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillLoad() {
+
+    //Subscribe to Firebase Authentication state, similar to onAuthStateChanged
     this.afAuth.authState.subscribe(data => {
+
+      // console.log("data", data);
       if (data && data.email && data.uid){
         this.toast.create({
-          message: `Welcome to my App, ${data.email}`,
+          message: `Welcome to Snapbit, ${data.email}`,
           duration: 3500
         }).present();
       }
@@ -42,8 +44,5 @@ export class DashboardPage {
     });
   }
 
-  submit() {
-    console.log(this.user);
-  }
 
 }
