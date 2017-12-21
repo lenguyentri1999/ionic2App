@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import * as firebase from 'firebase';
+
 
 @IonicPage()
 @Component({
@@ -71,7 +72,10 @@ export class DashboardPage {
       }
 
     });
+
+
   }
+
 
 
 }

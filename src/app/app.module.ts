@@ -10,11 +10,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
+import { SideMenuPage } from '../pages/side-menu/side-menu';
 
 
 //---------------- FIREBASE AND ANGULAR STUFF ------------
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
 
 //---------------- EXTRANEOUS STUFF FROM @IONIC ------------
@@ -26,20 +28,23 @@ import { Camera } from '@ionic-native/camera';
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    SideMenuPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    LoginPage
+    LoginPage,
+    SideMenuPage
   ],
   providers: [
     StatusBar,

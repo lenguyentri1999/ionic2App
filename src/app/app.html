@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<!-- <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
       <ion-title>Snapbit</ion-title>
@@ -13,7 +13,31 @@
     </ion-list>
   </ion-content>
 
-</ion-menu>
+</ion-menu> -->
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-menu [content]="myContent">
+
+    <ion-header>
+      <ion-toolbar>
+      <ion-title>Snapbit</ion-title>
+    </ion-toolbar>
+
+
+    </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage('DashboardPage')">Dashboard</button>
+      <button ion-item (click)="openPage('ChatPage')">Chat</button>
+      <button ion-item (click)="openPage('SettingsPage')">Settings</button>
+
+
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+<ion-nav #myContent></ion-nav>
+<ion-nav [root]="rootPage"></ion-nav>
