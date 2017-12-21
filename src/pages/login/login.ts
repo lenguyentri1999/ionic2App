@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,11 +23,17 @@ export class LoginPage {
 
 
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private afAuth: AngularFireAuth, public menuCtrl: MenuController) {
 
     //Disable swipe menu on login screen
     this.menuCtrl.swipeEnable(false);
+
+
   };
+
+
+
 
 
   // ionViewDidLoad() {
@@ -38,6 +45,7 @@ export class LoginPage {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       console.log('result', result);
       if (result){
+        this.menuCtrl.swipeEnable(true);
         this.navCtrl.setRoot('DashboardPage');
       }
     }
