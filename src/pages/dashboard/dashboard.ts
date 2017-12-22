@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, MenuController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -20,12 +20,13 @@ export class DashboardPage {
     quality: 100,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
+    mediaType: this.camera.MediaType.PICTURE,
+    saveToPhotoAlbum: true
   }
 
   //----------------------- CONSTRUCTORS -----------------------------------
   constructor(
-    private afAuth: AngularFireAuth, private toast: ToastController, private camera: Camera,
+    private afAuth: AngularFireAuth, private toast: ToastController, private camera: Camera, public menuCtrl: MenuController,
     public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -74,6 +75,10 @@ export class DashboardPage {
     });
 
 
+  }
+
+  toggleMenu(){
+    this.menuCtrl.open();
   }
 
 

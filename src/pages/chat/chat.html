@@ -12,7 +12,15 @@
 
 </ion-header>
 
+<!--
+<li *ngFor="let user of users | async">
+    {{ user.name }}
+</li>
+-->
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="newmessage" placeholder="Type here..."></ion-input>
+  </ion-item>
+  <button ion-button (click)="sendMessage()">Send</button>
 </ion-content>
